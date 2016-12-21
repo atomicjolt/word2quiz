@@ -7,12 +7,25 @@ module Word2Quiz
       @correct = correct
     end
 
-    def self.from_lines(lines, solution)
-      text = "#{lines[0].sub(/^[a-z]\./, '')}\n" +
-             "#{lines[1...lines.count].join("\n")}"
-
-      is_correct = lines[0].match(/^[a-z]/)[0] == solution
+    def self.from_paragraphs(paragraphs, solution)
+      text = paragraphs.map(&:to_html).join("\n")
+      answer_letter = paragraphs[0].text.match(/^[a-z]/)
+      is_correct = answer_letter && (answer_letter[0] == solution)
       Answer.new(text, is_correct)
+    end
+
+    def to_h
+      {
+        text: @text,
+        correct: @correct
+      }
+    end
+
+    def to_canvas
+      {
+        answer_text: @text,
+        answer_weight: @correct ? 100 : 0
+      }
     end
   end
 end

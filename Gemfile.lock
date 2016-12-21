@@ -2,18 +2,20 @@ PATH
   remote: .
   specs:
     word_2_quiz (0.1.0)
-      yomu (~> 0.2)
+      docx (~> 0.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
     byebug (9.0.6)
-    json (1.8.3)
-    mime-types (1.25.1)
+    docx (0.2.07)
+      nokogiri (~> 1.5)
+      rubyzip (~> 1.1.6)
+    mini_portile2 (2.1.0)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     rake (10.5.0)
-    yomu (0.2.4)
-      json (~> 1.8)
-      mime-types (~> 1.23)
+    rubyzip (1.1.7)
 
 PLATFORMS
   ruby

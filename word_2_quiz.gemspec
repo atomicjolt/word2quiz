@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Spencer"]
   spec.email         = ["davidjspencer@ufl.edu"]
 
-  spec.summary       = "Read in quizzes and return a harsh of questions with answers"
-  spec.description   = "Read"
+  spec.summary       = "Read in word doc quizzes and return a hash of questions with answers"
+  spec.description   = "Read in word doc quizzes and return a hash of questions with answers"
   spec.homepage      = "https://github.com"
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -31,5 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "byebug", "~> 9.0"
-  spec.add_dependency "yomu", "~> 0.2"
+  spec.add_dependency "docx", "~> 0.2"
 end

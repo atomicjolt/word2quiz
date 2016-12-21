@@ -1,5 +1,9 @@
+require "word_2_quiz/helpers"
+
 module Word2Quiz
   class Question
+    include Word2Quiz::Helpers
+
     attr_accessor :text, :answers
 
     def initialize(text = "", answers = [])
@@ -9,37 +13,48 @@ module Word2Quiz
 
     ##
     # Creates a question from an array of strings
-    # lines: an array of strings containing each line for the question text and
-    #        answers
+    # paragraphs: an array of nokogiri nodes containing each line for the
+    # question text and answers
     # solution: a string containing which answer(a,b,c,d) is correct
     ##
-    def self.from_lines(lines, solution)
+    def self.from_paragraphs(paragraphs, solution)
       answers = []
 
-      answer_start_indexes = lines.each_index.select do |i|
+      answer_start_indexes = paragraphs.each_index.select do |i|
         #an answer starts with a letter then a dot
-        lines[i].match(/^[a-z]\./)
+        paragraphs[i].text.match(/^[a-z]\./)
       end
 
-      all_answer_lines = answer_start_indexes.map.with_index do |start_index, i|
-        first_index = start_index
-        last_index = answer_start_indexes[i+1] || lines.count
+      all_answer_paragraphs = Helpers.map_to_boundaries(
+        answer_start_indexes,
+        paragraphs
+      )
 
-        lines[first_index...last_index]
+      question_paragraphs = paragraphs[0...answer_start_indexes[0]]
+      question_text = question_paragraphs.map(&:to_html).join("\n")
+
+      all_answer_paragraphs.each do |answer_paragraphs|
+        answer = Answer.from_paragraphs(answer_paragraphs, solution)
+        answers.push(answer)
       end
 
-      question_text = "#{lines[0].sub(/^\d*\./, "")}\n" +
-                      "#{lines[1...answer_start_indexes[0]].join("\n")}"
-
-      answer_start_indexes.each_slice(2) do |answer_indexes|
-        start_index = answer_indexes[0]
-        end_index = answer_indexes[1] || lines.count
-
-        answer_lines = lines[start_index...end_index]
-        answers.concat([Answer.from_lines(answer_lines, solution)])
-      end
-      byebug
       Question.new(question_text, answers)
+    end
+
+    def to_h
+      {
+        text: @text,
+        answers: @answers.map(:to_h)
+      }
+    end
+
+    def to_canvas
+      {
+        question_type: "multiple_choice_question",
+        question_text: @text,
+        points_possible: 5,
+        answers: @answers.map(&:to_canvas)
+      }
     end
   end
 end
