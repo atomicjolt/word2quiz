@@ -3,18 +3,20 @@ require "word_2_quiz/answer"
 
 module Word2Quiz
   class Quiz
-    attr_accessor :questions, :description, :title
+    attr_accessor :questions, :description, :title, :time_limit
 
-    def initialize
+    def initialize(title:, time_limit:, description: "")
       @questions = []
-      @description = ""
-      @title = ""
+      @description = description
+      @title = title
+      @time_limit = time_limit
     end
 
     def to_h
       {
         questions: @questions.map(&:to_h),
-        description: @descriptions
+        description: @descriptions,
+        time_limit: @time_limit
       }
     end
 
@@ -25,7 +27,7 @@ module Word2Quiz
         quiz_type: "assignment",
         description: @description,
         allowed_attempts: 1,
-
+        time_limit: @time_limit
       }
     end
   end
