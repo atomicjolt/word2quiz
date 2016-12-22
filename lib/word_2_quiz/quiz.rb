@@ -30,5 +30,9 @@ module Word2Quiz
         time_limit: @time_limit
       }
     end
+
+    def questions_as_canvas
+      @questions.map(:to_canvas)
+    end
   end
 end
