@@ -26,8 +26,8 @@ module Word2Quiz
       end
 
       all_answer_paragraphs = Helpers.map_to_boundaries(
-        answer_start_indexes,
-        paragraphs
+        indexes: answer_start_indexes,
+        paragraphs: paragraphs
       )
 
       question_paragraphs = paragraphs[0...answer_start_indexes[0]]
