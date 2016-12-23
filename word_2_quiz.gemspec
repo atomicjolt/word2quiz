@@ -28,12 +28,18 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.13"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "byebug", "~> 9.0"
-  spec.add_development_dependency "rspec", "~> 3.5"
-  spec.add_development_dependency "factory_girl", "~> 4.8"
-  spec.add_dependency "yomu", "~> 0.2"
-  spec.add_dependency "docx", "~> 0.2"
-  spec.add_dependency "numbers_in_words", "~> 0.4"
+  [
+    ["bundler", "~> 1.13"],
+    ["rake", "~> 10.0"],
+    ["byebug", "~> 9.0"],
+    ["rspec", "~> 3.5"],
+    ["factory_girl", "~> 4.8"],
+  ].each { |d| spec.add_development_dependency(*d) }
+
+  [
+    ["yomu", "~> 0.2"],
+    ["docx", "~> 0.2"],
+    ["numbers_in_words", "~> 0.4"],
+    ["activesupport", "~> 4.2"],
+  ].each { |d| spec.add_runtime_dependency(*d) }
 end
