@@ -3,7 +3,6 @@
 /.bundle/
 /.yardoc
 /_yardoc/
-/Gemfile.lock
 /log
 /tmp
 /spec/tmp
