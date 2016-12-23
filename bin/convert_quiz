@@ -4,8 +4,10 @@ LIB_DIR = File.join(__dir__, "..", "lib")
 $LOAD_PATH << LIB_DIR
 require "bundler/setup"
 require "word_2_quiz/quiz_parser"
+require "word_2_quiz/quiz_solutions_parser"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
-
-Word2Quiz.parse_quiz(ARGV[0])
+#Switch this out with parse solutions
+#Word2Quiz.parse_quiz(ARGV[0])
+Word2Quiz.parse_answers(ARGV[0])
