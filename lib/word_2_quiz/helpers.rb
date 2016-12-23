@@ -6,6 +6,11 @@ module Word2Quiz
       "minutes" => 1,
     }.freeze
 
+    TITLE_START = 3
+    TITLE_END = 4
+    DESCRIPTION_START = 0
+    DESCRIPTION_END = 5
+
     ##
     # Takes in an array of indexes, and spits out an array of arrays of
     # paragraphs bounded by the indexes.
@@ -29,8 +34,8 @@ module Word2Quiz
         "",
       ).chomp(".")
 
-      time_number = time.split(" ")[0]
-      time_unit = time.split(" ")[1]
+      time_number = time.split(" ").first
+      time_unit = time.split(" ").last
       unit_conversion = TIME_TO_MINUTES_MAP[time_unit]
 
       NumbersInWords.in_numbers(time_number) * unit_conversion
@@ -41,7 +46,7 @@ module Word2Quiz
     # the quiz.
     ##
     def self.get_quiz_title(paragraphs)
-      paragraphs[3..4].map(&:text).join(" ")
+      paragraphs[TITLE_START..TITLE_END].map(&:text).join(" ")
     end
 
     ##
@@ -49,7 +54,7 @@ module Word2Quiz
     # quiz.
     ##
     def self.get_quiz_description(paragraphs)
-      paragraphs[0..5].map(&:to_html).join("\n")
+      paragraphs[DESCRIPTION_START..DESCRIPTION_END].map(&:to_html).join("\n")
     end
 
     ##

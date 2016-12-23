@@ -5,6 +5,7 @@ require "word_2_quiz/helpers"
 module Word2Quiz
   class Quiz
     attr_accessor :questions, :description, :title, :time_limit
+    ALLOWED_ATTEMPTS = 1
 
     def initialize(title:, time_limit:, description: "")
       @questions = []
@@ -67,7 +68,7 @@ module Word2Quiz
         question_count: @questions.count,
         quiz_type: "assignment",
         description: @description,
-        allowed_attempts: 1,
+        allowed_attempts: ALLOWED_ATTEMPTS,
         time_limit: @time_limit,
       }
     end
