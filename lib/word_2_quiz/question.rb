@@ -3,7 +3,7 @@ require "word_2_quiz/helpers"
 module Word2Quiz
   class Question
     attr_accessor :text, :answers
-    
+
     POINTS_POSSIBLE = 5
 
     def initialize(text = "", answers = [])
