@@ -72,5 +72,15 @@ module Word2Quiz
     def self.get_question_indexes(paragraphs)
       paragraphs.each_index.select { |i| paragraphs[i].text.match(/^\d*\./) }
     end
+
+    ##
+    # Returns an array of paragraphs with leading and trailing blank paragraphs
+    # removed.
+    ##
+    def self.strip_blanks(paragraphs)
+      t = paragraphs.drop_while { |p| p.text.chomp.empty? }
+      t.pop while t.last.text.chomp.empty?
+      t
+    end
   end
 end
