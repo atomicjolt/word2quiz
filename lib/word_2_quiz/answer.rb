@@ -17,14 +17,14 @@ module Word2Quiz
     def to_h
       {
         text: @text,
-        correct: @correct
+        correct: @correct,
       }
     end
 
     def to_canvas
       {
         answer_text: @text,
-        answer_weight: @correct ? 100 : 0
+        answer_weight: @correct ? 100 : 0,
       }
     end
   end

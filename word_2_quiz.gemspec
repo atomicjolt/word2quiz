@@ -1,13 +1,13 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'word_2_quiz/version'
+require "word_2_quiz/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "word_2_quiz"
   spec.version       = Word2Quiz::VERSION
   spec.authors       = ["David Spencer"]
-  spec.email         = ["davidjspencer@ufl.edu"]
+  spec.email         = ["david.spencer@atomicjolt.com"]
 
   spec.summary       = "Read in word doc quizzes and return a hash of questions with answers"
   spec.description   = "Read in word doc quizzes and return a hash of questions with answers"
@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "byebug", "~> 9.0"
+  spec.add_development_dependency "rspec", "~> 3.5"
+  spec.add_development_dependency "factory_girl", "~> 4.8"
   spec.add_dependency "yomu", "~> 0.2"
   spec.add_dependency "docx", "~> 0.2"
   spec.add_dependency "numbers_in_words", "~> 0.4"

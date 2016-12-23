@@ -21,13 +21,13 @@ module Word2Quiz
       answers = []
 
       answer_start_indexes = paragraphs.each_index.select do |i|
-        #an answer starts with a letter then a dot
+        # an answer starts with a letter then a dot
         paragraphs[i].text.match(/^[a-z]\./)
       end
 
       all_answer_paragraphs = Helpers.map_to_boundaries(
         indexes: answer_start_indexes,
-        paragraphs: paragraphs
+        paragraphs: paragraphs,
       )
 
       question_paragraphs = paragraphs[0...answer_start_indexes[0]]
@@ -44,7 +44,7 @@ module Word2Quiz
     def to_h
       {
         text: @text,
-        answers: @answers.map(:to_h)
+        answers: @answers.map(&:to_h),
       }
     end
 
@@ -53,7 +53,7 @@ module Word2Quiz
         question_type: "multiple_choice_question",
         question_text: @text,
         points_possible: 5,
-        answers: @answers.map(&:to_canvas)
+        answers: @answers.map(&:to_canvas),
       }
     end
   end
