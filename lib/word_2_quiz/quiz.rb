@@ -1,5 +1,6 @@
 require "word_2_quiz/question"
 require "word_2_quiz/answer"
+require "word_2_quiz/helpers"
 
 module Word2Quiz
   class Quiz
@@ -12,11 +13,51 @@ module Word2Quiz
       @time_limit = time_limit
     end
 
+    def self.from_paragraphs(paragraphs)
+      all_question_paragraphs = Quiz.get_question_paragraphs(paragraphs)
+
+      quiz_title = Helpers.get_quiz_title(paragraphs)
+      quiz_description = Helpers.get_quiz_description(paragraphs)
+
+      quiz_duration = Helpers.get_quiz_duration(paragraphs)
+
+      quiz = Quiz.new(
+        title: quiz_title,
+        time_limit: quiz_duration,
+        description: quiz_description,
+      )
+
+      all_question_paragraphs.each do |question_paragraphs|
+        question = Question.from_paragraphs(question_paragraphs, "")
+
+        quiz.questions.push(question)
+      end
+
+      quiz
+    end
+
+    def self.get_question_paragraphs(paragraphs)
+      question_start_index = Helpers.get_question_start_index(paragraphs)
+      question_end_index = Helpers.get_question_end_index(paragraphs)
+
+      question_range = paragraphs[question_start_index...question_end_index]
+
+      question_indexes = Helpers.get_question_indexes(question_range)
+
+      all_question_paragraphs = Helpers.map_to_boundaries(
+        indexes: question_indexes,
+        paragraphs: question_range,
+      )
+
+      all_question_paragraphs
+    end
+
     def to_h
       {
+        title: @title,
         questions: @questions.map(&:to_h),
-        description: @descriptions,
-        time_limit: @time_limit
+        description: @description,
+        time_limit: @time_limit,
       }
     end
 
@@ -27,12 +68,12 @@ module Word2Quiz
         quiz_type: "assignment",
         description: @description,
         allowed_attempts: 1,
-        time_limit: @time_limit
+        time_limit: @time_limit,
       }
     end
 
     def questions_as_canvas
-      @questions.map(:to_canvas)
+      @questions.map(&:to_canvas)
     end
   end
 end
