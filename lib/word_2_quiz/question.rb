@@ -31,6 +31,7 @@ module Word2Quiz
       )
 
       question_paragraphs = paragraphs[0...answer_start_indexes[0]]
+      question_paragraphs = Helpers.strip_blanks(question_paragraphs)
       question_text = question_paragraphs.map(&:to_html).join("\n")
 
       all_answer_paragraphs.each do |answer_paragraphs|
