@@ -1,8 +1,6 @@
 # Word2Quiz
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/word_2_quiz`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Converts word document quizzes to a Word2Quiz::Quiz, which can be converted to a hash or to an Instructure canvas hash format.
 
 ## Installation
 
@@ -22,7 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Expects a docx quiz where every question is on a new line started with a number
+followed by a period, and every answer is below each question. Every answer is
+on a new line, and begins with a letter followed by a period. The title is
+assumed to be on lines 3 & 4, and the description is generated from lines 0-5 of
+the quiz.
+
+The answer key should be in a doc file, where each solution consists of a
+number and an answer - e.g `1. C  2.B`
+
+To get the parse the quiz, run
+  `quiz = Word2Quiz.parse_quiz("path/to/quiz.docx", "path/to/solutions.doc")`
+
+To get the quiz as a hash, run `quiz.to_h`
+
+To get the quiz for creating on canvas run `quiz.to_canvas`
+
+To get the quiz questions for creating on canvas run `quiz.questions_as_canvas`
 
 ## Development
 
