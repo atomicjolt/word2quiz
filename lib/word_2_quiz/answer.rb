@@ -3,7 +3,7 @@ require "word_2_quiz/helpers"
 module Word2Quiz
   class Answer
     attr_accessor :text, :correct
-    
+
     ANSWER_START = 0
     CORRECT_WEIGHT = 100
     INCORRECT_WEIGHT = 0
