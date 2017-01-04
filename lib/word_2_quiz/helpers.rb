@@ -6,14 +6,17 @@ module Word2Quiz
       "minutes" => 1,
     }.freeze
 
+    # indexes of paragraphs where title and description start and end
     TITLE_START = 3
     TITLE_END = 4
     DESCRIPTION_START = 0
     DESCRIPTION_END = 5
 
     ##
-    # Takes in an array of indexes, and spits out an array of arrays of
-    # paragraphs bounded by the indexes.
+    # Takes in an array of indexes, and returns out an array of arrays of
+    # paragraphs bounded by the indexes, e.g. if indexes is [2, 5] then it
+    # returns:
+    # [paragraphs[0...2], paragraphs[2...5], paragraphs[5...paragraphs.count]]
     ##
     def self.map_to_boundaries(indexes:, paragraphs:)
       indexes.map.with_index do |start_index, i|
