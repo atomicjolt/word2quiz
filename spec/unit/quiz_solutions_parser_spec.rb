@@ -5,11 +5,16 @@ require "rubygems"
 describe Word2Quiz do
   describe "parse_answers " do
     before do
-      allow(Yomu).to receive(:new).and_return(double(text: "Quiz solutions: 1. A  2. B"))
+      allow(Yomu).to receive(:new).and_return(
+        double(text: "Quiz solutions: 1. A  2. B"),
+      )
     end
 
     it "opens the document" do
-      expect(Yomu).to receive(:new).and_return(double(text: "Quiz solutions: 1. A  2. B"))
+      expect(Yomu).to receive(:new).and_return(
+        double(text: "Quiz solutions: 1. A  2. B"),
+      )
+      
       Word2Quiz.parse_answers("file path")
     end
 
