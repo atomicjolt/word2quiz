@@ -12,8 +12,7 @@ module Word2Quiz
 
     while scanner.scan_until(/\d+\.\s+[A-Z]/) && !scanner.eos?
       solution_text = scanner.matched.split(".").map(&:strip)
-      question_answer = [solution_text].to_h
-      answers.merge!(question_answer)
+      answers.merge!([solution_text].to_h)
     end
 
     answers
