@@ -32,6 +32,11 @@ describe Word2Quiz::Answer do
       expect(answer.correct).to eq false
     end
 
+    it "should set correct case insensitive" do
+      answer = Word2Quiz::Answer.from_paragraphs(@paragraphs, @correct.upcase)
+      expect(answer.correct).to eq true
+    end
+
     it "should set text" do
       answer = Word2Quiz::Answer.from_paragraphs(@paragraphs, @correct)
       expect(answer.text).to eq @paragraphs.map(&:to_html).join("\n")
