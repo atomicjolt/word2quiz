@@ -45,12 +45,10 @@ module Word2Quiz
 
       question_indexes = Helpers.get_question_indexes(question_range)
 
-      all_question_paragraphs = Helpers.map_to_boundaries(
+      Helpers.map_to_boundaries(
         indexes: question_indexes,
         paragraphs: question_range,
       )
-
-      all_question_paragraphs
     end
 
     def to_h
