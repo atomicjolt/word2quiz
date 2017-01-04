@@ -10,7 +10,7 @@ module Word2Quiz
     scanner = StringScanner.new(text)
     answers = {}
 
-    while scanner.scan_until(/\d+\.\s+[A-Z]/) && !scanner.eos?
+    while scanner.scan_until(/\d+\.\s+[A-Z]/)
       solution_text = scanner.matched.split(".").map(&:strip)
       answers.merge!([solution_text].to_h)
     end
