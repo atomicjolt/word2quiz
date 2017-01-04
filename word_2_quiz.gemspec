@@ -1,13 +1,13 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'word_2_quiz/version'
+require "word_2_quiz/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "word_2_quiz"
   spec.version       = Word2Quiz::VERSION
   spec.authors       = ["David Spencer"]
-  spec.email         = ["davidjspencer@ufl.edu"]
+  spec.email         = ["david.spencer@atomicjolt.com"]
 
   spec.summary       = "Read in word doc quizzes and return a hash of questions with answers"
   spec.description   = "Read in word doc quizzes and return a hash of questions with answers"
@@ -28,10 +28,18 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.13"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "byebug", "~> 9.0"
-  spec.add_dependency "yomu", "~> 0.2"
-  spec.add_dependency "docx", "~> 0.2"
-  spec.add_dependency "numbers_in_words", "~> 0.4"
+  [
+    ["bundler", "~> 1.13"],
+    ["rake", "~> 10.0"],
+    ["byebug", "~> 9.0"],
+    ["rspec", "~> 3.5"],
+    ["factory_girl", "~> 4.8"],
+  ].each { |d| spec.add_development_dependency(*d) }
+
+  [
+    ["yomu", "~> 0.2"],
+    ["docx", "~> 0.2"],
+    ["numbers_in_words", "~> 0.4"],
+    ["activesupport", "~> 4.2"],
+  ].each { |d| spec.add_runtime_dependency(*d) }
 end
