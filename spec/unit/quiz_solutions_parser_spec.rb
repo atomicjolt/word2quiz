@@ -14,7 +14,7 @@ describe Word2Quiz do
       expect(Yomu).to receive(:new).and_return(
         double(text: "Quiz solutions: 1. A  2. B"),
       )
-      
+
       Word2Quiz.parse_answers("file path")
     end
 
