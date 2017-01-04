@@ -1,6 +1,10 @@
 require "word_2_quiz/helpers"
 
 module Word2Quiz
+  ##
+  # Answer contains all data for a single answer. An answer has text and whether
+  # it is correct.
+  ##
   class Answer
     attr_accessor :text, :correct
 
@@ -16,6 +20,10 @@ module Word2Quiz
       @correct = correct
     end
 
+    ##
+    # Expects an array of paragraphs that are a single answer, and
+    # The correct answer for that question, e.g. answer="a"
+    ##
     def self.from_paragraphs(paragraphs, solution)
       non_empty_paragraphs = Helpers.strip_blanks(paragraphs)
       text = non_empty_paragraphs.map(&:to_html).join("\n")
