@@ -4,7 +4,10 @@ module Word2Quiz
   class Answer
     attr_accessor :text, :correct
 
+    # index of the very first answer paragraph
     ANSWER_START = 0
+
+    # Canvas expects a weight greather than zero for correct, 0 for incorrect.
     CORRECT_WEIGHT = 100
     INCORRECT_WEIGHT = 0
 
@@ -16,7 +19,9 @@ module Word2Quiz
     def self.from_paragraphs(paragraphs, solution)
       non_empty_paragraphs = Helpers.strip_blanks(paragraphs)
       text = non_empty_paragraphs.map(&:to_html).join("\n")
-      is_correct = non_empty_paragraphs[ANSWER_START].text.start_with?(solution)
+      start_paragraph = non_empty_paragraphs[ANSWER_START]
+      is_correct = start_paragraph.text.downcase.start_with?(solution.downcase)
+
       Answer.new(text, is_correct)
     end
 
