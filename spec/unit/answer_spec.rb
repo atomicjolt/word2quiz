@@ -71,7 +71,7 @@ describe Word2Quiz::Answer do
     end
 
     it "should set answer_text" do
-      expect(@answer.to_canvas[:answer_text]).to eq "asdf"
+      expect(@answer.to_canvas[:answer_html]).to eq "asdf"
     end
 
     it "should set answer_weight when correct" do
