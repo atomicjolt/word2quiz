@@ -40,9 +40,11 @@ module Word2Quiz
       }
     end
 
+    # Canvas has an undocumented answer_html field for answers that we have to
+    # use because we are sending html, not plain text.
     def to_canvas
       {
-        answer_text: @text,
+        answer_html: @text,
         answer_weight: @correct ? CORRECT_WEIGHT : INCORRECT_WEIGHT,
       }
     end
