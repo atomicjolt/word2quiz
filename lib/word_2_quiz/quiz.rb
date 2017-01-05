@@ -3,8 +3,13 @@ require "word_2_quiz/answer"
 require "word_2_quiz/helpers"
 
 module Word2Quiz
+  ##
+  # Quiz contains all quiz data. A quiz has a description,
+  # a title, a time limit, and questions.
+  ##
   class Quiz
     attr_accessor :questions, :description, :title, :time_limit
+
     ALLOWED_ATTEMPTS = 1
 
     def initialize(title:, time_limit:, description: "")

@@ -1,6 +1,10 @@
 require "word_2_quiz/helpers"
 
 module Word2Quiz
+  ##
+  # Question contains all data for a single question. A question has text, and
+  # answers.
+  ##
   class Question
     attr_accessor :text, :answers
 
