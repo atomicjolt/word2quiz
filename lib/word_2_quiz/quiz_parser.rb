@@ -1,5 +1,4 @@
 require "docx"
-require "byebug"
 require "word_2_quiz/quiz"
 require "word_2_quiz/helpers"
 
