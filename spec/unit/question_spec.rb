@@ -2,7 +2,6 @@ require "word_2_quiz/question"
 require "rspec"
 require "rspec/mocks"
 require "rubygems"
-require "byebug"
 
 describe Word2Quiz::Question do
   before(:each) do

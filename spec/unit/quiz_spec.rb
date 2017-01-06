@@ -3,7 +3,6 @@ require "rspec"
 require "rspec/mocks"
 require "factory_girl"
 require "rubygems"
-require "byebug"
 
 RSpec.configure do |config|
   config.before(:suite) do
