@@ -19,7 +19,7 @@ module Word2Quiz
       @time_limit = time_limit
     end
 
-    def self.from_paragraphs(paragraphs)
+    def self.from_paragraphs(paragraphs, answers)
       all_question_paragraphs = Quiz.get_question_paragraphs(paragraphs)
 
       quiz_title = Helpers.get_quiz_title(paragraphs)
@@ -34,11 +34,14 @@ module Word2Quiz
       )
 
       all_question_paragraphs.each do |question_paragraphs|
-        question = Question.from_paragraphs(question_paragraphs, "")
+        question_number = Helpers.get_question_number(question_paragraphs)
+        question = Question.from_paragraphs(
+          question_paragraphs,
+          answers[question_number],
+        )
 
         quiz.questions.push(question)
       end
-
       quiz
     end
 

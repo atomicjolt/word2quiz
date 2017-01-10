@@ -11,20 +11,22 @@ describe Word2Quiz do
 
       allow(Docx::Document).to receive(:open).and_return(fake_doc)
       allow(Word2Quiz::Quiz).to receive(:from_paragraphs).and_return(fake_quiz)
+      allow(Yomu).to receive(:new).and_return(double(text: "asdf"))
     end
 
     it "returns a quiz" do
-      expect(Word2Quiz.parse_quiz("file/path.docx")).to be_a Word2Quiz::Quiz
+      expect(Word2Quiz.parse_quiz("file/path.docx", "file/path.docx")).
+        to be_a Word2Quiz::Quiz
     end
 
     it "should parse the document" do
       expect(Docx::Document).to receive(:open).with("file/path.docx")
-      Word2Quiz.parse_quiz("file/path.docx")
+      Word2Quiz.parse_quiz("file/path.docx", "file/path.docx")
     end
 
     it "should create a quiz from the paragraphs" do
       expect(Word2Quiz::Quiz).to receive(:from_paragraphs)
-      Word2Quiz.parse_quiz("file/path.docx")
+      Word2Quiz.parse_quiz("file/path.docx", "file/path.docx")
     end
   end
 end
