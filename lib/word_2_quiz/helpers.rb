@@ -11,6 +11,7 @@ module Word2Quiz
     TITLE_END = 4
     DESCRIPTION_START = 0
     DESCRIPTION_END = 5
+    QUESTION_START = 0
 
     ##
     # Takes in an array of indexes, and returns out an array of arrays of
@@ -59,6 +60,16 @@ module Word2Quiz
     def self.get_quiz_description(paragraphs)
       paragraphs[DESCRIPTION_START..DESCRIPTION_END].map(&:to_html).join("\n")
     end
+
+    ##
+    # Returns the question number
+    #
+    ##
+    def self.get_question_number(paragraphs)
+      match = paragraphs[QUESTION_START].text.match(/^(\d+)\./)
+      match ? match.captures.first : nil
+    end
+
 
     ##
     # Finds the index of the paragraph where the questions start

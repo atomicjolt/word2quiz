@@ -15,8 +15,8 @@ describe Word2Quiz::Quiz do
   before do
     doc = FactoryGirl.create(:doc_quiz)
     @paragraphs = doc.paragraphs
-
     @questions = FactoryGirl.create_list(:question, 10)
+    @answers = {}
   end
 
   describe "from_paragraphs" do
@@ -25,7 +25,7 @@ describe Word2Quiz::Quiz do
         *@questions,
       )
 
-      @quiz = Word2Quiz::Quiz.from_paragraphs(@paragraphs)
+      @quiz = Word2Quiz::Quiz.from_paragraphs(@paragraphs, @answers)
     end
 
     it "should return a new quiz" do
@@ -36,7 +36,7 @@ describe Word2Quiz::Quiz do
       expect(Word2Quiz::Question).to receive(:from_paragraphs).and_return(
         *@questions,
       )
-      quiz = Word2Quiz::Quiz.from_paragraphs(@paragraphs)
+      quiz = Word2Quiz::Quiz.from_paragraphs(@paragraphs, @answers)
       expect(quiz.questions.count).to eq 10
       expect(quiz.questions).to eq @questions
     end
