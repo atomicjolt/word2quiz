@@ -70,7 +70,6 @@ module Word2Quiz
       match ? match.captures.first : nil
     end
 
-
     ##
     # Finds the index of the paragraph where the questions start
     ##
