@@ -100,5 +100,12 @@ module Word2Quiz
       t.pop while t.last.text.chomp.empty?
       t
     end
+
+    ##
+    # Checks for if the quiz is a valid quiz we can process
+    ##
+    def self.valid_quiz?(text)
+      text.include?("Course Examination") && text.include?("Multiple Choice")
+    end
   end
 end

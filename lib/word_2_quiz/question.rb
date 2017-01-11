@@ -1,4 +1,5 @@
 require "word_2_quiz/helpers"
+require "word_2_quiz/errors"
 
 module Word2Quiz
   ##
@@ -22,6 +23,13 @@ module Word2Quiz
     # solution: a string containing which answer(a,b,c,d) is correct
     ##
     def self.from_paragraphs(paragraphs, solution)
+      if solution.nil? || solution.empty?
+        raise InvalidAnswerKey.new(
+          "Question #{Helpers.get_question_number(paragraphs)} does not have" +
+          " an answer."
+        )
+      end
+
       answers = []
 
       answer_start_indexes = paragraphs.each_index.select do |i|
