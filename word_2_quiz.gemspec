@@ -6,8 +6,7 @@ require "word_2_quiz/version"
 Gem::Specification.new do |spec|
   spec.name          = "word_2_quiz"
   spec.version       = Word2Quiz::VERSION
-  spec.authors       = ["Atomic Jolt", "David Spencer"]
-  spec.email         = ["david.spencer@atomicjolt.com"]
+  spec.authors       = ["Atomic Jolt"]
 
   spec.summary       = "Read in word doc quizzes and return a hash of questions with answers"
   spec.description   = "Read in word doc quizzes and return a hash of questions with answers"
