@@ -7,4 +7,6 @@ begin
 rescue LoadError
 end
 
+Bundler::GemHelper.install_tasks
+
 task default: :spec
