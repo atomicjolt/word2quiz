@@ -6,13 +6,13 @@ describe Word2Quiz do
   describe "parse_answers " do
     before do
       allow(Yomu).to receive(:new).and_return(
-        double(text: "Quiz solutions: 1. A  2. B"),
+        double(text: "QUES ANS ---- --- Quiz solutions: 1. A  2. B"),
       )
     end
 
     it "opens the document" do
       expect(Yomu).to receive(:new).and_return(
-        double(text: "Quiz solutions: 1. A  2. B"),
+        double(text: "QUES ANS ---- --- Quiz solutions: 1. A  2. B"),
       )
 
       Word2Quiz.parse_answers("file path")
@@ -22,6 +22,16 @@ describe Word2Quiz do
       answers = Word2Quiz.parse_answers("file path")
       expect(answers["1"]).to eq "A"
       expect(answers["2"]).to eq "B"
+    end
+
+    it "raises an error when the answer key is invalid" do
+      allow(Yomu).to receive(:new).and_return(
+        double(text: "Quiz solutions: 1. A  2. B"),
+      )
+
+      expect do
+        Word2Quiz.parse_answers("file path")
+      end.to raise_error(Word2Quiz::InvalidAnswerKey)
     end
   end
 end

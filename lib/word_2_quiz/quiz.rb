@@ -72,6 +72,7 @@ module Word2Quiz
       {
         title: @title,
         question_count: @questions.count,
+        points_possible: @questions.count * Question::POINTS_POSSIBLE,
         quiz_type: "assignment",
         description: @description,
         allowed_attempts: ALLOWED_ATTEMPTS,
