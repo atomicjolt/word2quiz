@@ -26,7 +26,7 @@ module Word2Quiz
       if solution.nil? || solution.empty?
         raise InvalidAnswerKey.new(
           "Question #{Helpers.get_question_number(paragraphs)} does not have" +
-          " an answer."
+          " an answer.",
         )
       end
 
