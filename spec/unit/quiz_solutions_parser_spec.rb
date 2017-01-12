@@ -28,7 +28,7 @@ describe Word2Quiz do
       allow(Yomu).to receive(:new).and_return(
         double(text: "Quiz solutions: 1. A  2. B"),
       )
-      
+
       expect do
         Word2Quiz.parse_answers("file path")
       end.to raise_error(Word2Quiz::InvalidAnswerKey)
