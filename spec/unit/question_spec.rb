@@ -18,6 +18,18 @@ describe Word2Quiz::Question do
       )
     end
 
+    it "should raise an error when answer is nil for the question" do
+      expect do
+        Word2Quiz::Question.from_paragraphs(@paragraphs, nil)
+      end.to raise_error(Word2Quiz::InvalidAnswerKey)
+    end
+
+    it "should raise an error when answer is empty for the question" do
+      expect do
+        Word2Quiz::Question.from_paragraphs(@paragraphs, "")
+      end.to raise_error(Word2Quiz::InvalidAnswerKey)
+    end
+
     it "should return a new question" do
       question = Word2Quiz::Question.from_paragraphs(@paragraphs, "c")
       expect(question).to be_a(Word2Quiz::Question)
