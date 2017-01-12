@@ -20,9 +20,7 @@ describe Word2Quiz do
 
       allow(Docx::Document).to receive(:open).and_return(@valid_fake_doc)
       allow(Word2Quiz::Quiz).to receive(:from_paragraphs).and_return(fake_quiz)
-      allow(Word2Quiz).
-        to receive(:parse_answers).
-        and_return(FactoryGirl.create(:answer_key))
+      allow(Word2Quiz).to receive(:parse_answers)
     end
 
     it "returns a quiz" do
@@ -36,9 +34,7 @@ describe Word2Quiz do
     end
 
     it "should get the answer key" do
-      expect(Word2Quiz).
-        to receive(:parse_answers).
-        and_return(FactoryGirl.create(:answer_key))
+      expect(Word2Quiz).to receive(:parse_answers)
       Word2Quiz.parse_quiz("file/path.docx", "file/path.docx")
     end
 
