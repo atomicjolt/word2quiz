@@ -29,10 +29,31 @@ FactoryGirl.define do
     sequence(:to_html) { |n| "<p>Quiz Description #{n}</p>" }
   end
 
+  factory :quiz_title, class: OpenStruct do
+    text ["Blah", "blah", "blah", "This is", "the title"]
+    to_html "<p> Blah, blah, blah, This is, the title"
+  end
+
   factory :time_paragraph, class: OpenStruct do
     text "This examination consists of one session not to exceed two hours"
     to_html "<p>This examination consists of one session not to exceed two " +
       "hours</p>"
+  end
+
+  factory :spacey_text, class: OpenStruct do
+    sequence(:text) { "       " }
+    sequence(:to_html) { "    " }
+  end
+
+  factory :spacey_paragraphs, class: OpenStruct do
+    paragraphs []
+
+    after(:create) do |spacey_paragraphs|
+      spacey_paragraphs.paragraphs = []
+      spacey_paragraphs.paragraphs << FactoryGirl.create(:spacey_text)
+      spacey_paragraphs.paragraphs << FactoryGirl.create(:question_paragraph)
+      spacey_paragraphs.paragraphs << FactoryGirl.create(:spacey_text)
+    end
   end
 
   factory :doc_question, class: OpenStruct do

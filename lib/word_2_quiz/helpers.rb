@@ -96,8 +96,8 @@ module Word2Quiz
     # removed.
     ##
     def self.strip_blanks(paragraphs)
-      t = paragraphs.drop_while { |p| p.text.chomp.empty? }
-      t.pop while t.last.text.chomp.empty?
+      t = paragraphs.drop_while { |p| p.text.strip.empty? }
+      t.pop while t.last.text.strip.empty?
       t
     end
 
