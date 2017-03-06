@@ -39,7 +39,8 @@ describe Word2Quiz::Answer do
 
     it "should set text" do
       answer = Word2Quiz::Answer.from_paragraphs(@paragraphs, @correct)
-      expect(answer.text).to eq @paragraphs.map(&:to_html).join("\n")
+      expected = @paragraphs.map(&:to_html).join("\n").sub(/[a-z]\.\s?/, "")
+      expect(answer.text).to eq expected
     end
   end
 

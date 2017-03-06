@@ -26,7 +26,11 @@ module Word2Quiz
     ##
     def self.from_paragraphs(paragraphs, solution)
       non_empty_paragraphs = Helpers.strip_blanks(paragraphs)
-      text = non_empty_paragraphs.map(&:to_html).join("\n")
+
+      text = non_empty_paragraphs.map do |paragraph|
+        paragraph.to_html.sub(/(>)[a-z]\.\s?/i, '\1') # Remove answer letter.
+      end.join("\n")
+
       start_paragraph = non_empty_paragraphs[ANSWER_START]
       is_correct = start_paragraph.text.downcase.start_with?(solution.downcase)
 
