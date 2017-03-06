@@ -30,8 +30,6 @@ module Word2Quiz
         )
       end
 
-      answers = []
-
       answer_start_indexes = paragraphs.each_index.select do |i|
         # an answer starts with a letter then a dot
         paragraphs[i].text.match(/^[a-z]\./)
@@ -47,6 +45,8 @@ module Word2Quiz
       question_text = question_paragraphs.map do |paragraph|
         paragraph.to_html.sub(/(>)\d+\.\s?/, '\1') # Remove question number.
       end.join("\n")
+
+      answers = []
 
       all_answer_paragraphs.each do |answer_paragraphs|
         answer = Answer.from_paragraphs(answer_paragraphs, solution)

@@ -63,11 +63,9 @@ module Word2Quiz
 
     ##
     # Returns the question number
-    #
     ##
     def self.get_question_number(paragraphs)
-      match = paragraphs[QUESTION_START].text.match(/^(\d+)\./)
-      match ? match.captures.first : nil
+      paragraphs[QUESTION_START].text[/^(\d+)\./, 1]
     end
 
     ##
