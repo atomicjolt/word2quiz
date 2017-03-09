@@ -23,8 +23,6 @@ Or install it yourself as:
 
     $ gem install word_2_quiz
 
-You will also need to install the [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-
 ## Usage
 
 Expects a docx quiz where every question is on a new line started with a number
