@@ -23,6 +23,8 @@ Or install it yourself as:
 
     $ gem install word_2_quiz
 
+You will also need to install the [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+
 ## Usage
 
 Expects a docx quiz where every question is on a new line started with a number
@@ -51,4 +53,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/word_2_quiz.
+Bug reports and pull requests are welcome on GitHub at https://github.com/atomicjolt/word2quiz.

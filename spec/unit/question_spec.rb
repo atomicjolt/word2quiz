@@ -43,7 +43,8 @@ describe Word2Quiz::Question do
 
     it "should set text" do
       question = Word2Quiz::Question.from_paragraphs(@paragraphs, "c")
-      expect(question.text).to eq @paragraphs[0..1].map(&:to_html).join("\n")
+      expected = @paragraphs[0..1].map(&:to_html).join("\n").sub(/\d+\.\s?/, "")
+      expect(question.text).to eq expected
     end
   end
 
