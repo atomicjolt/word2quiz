@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   ].each { |d| spec.add_development_dependency(*d) }
 
   [
-    ["yomu", "~> 0.2"],
+    ["doc_ripper", "~> 0.0.7.2"],
     ["docx", "~> 0.2"],
     ["numbers_in_words", "~> 0.4"],
     ["activesupport", "~> 4.2"],

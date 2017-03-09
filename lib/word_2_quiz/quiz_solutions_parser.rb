@@ -1,12 +1,15 @@
-require "yomu"
-require "docx"
+require "doc_ripper"
 require "strscan"
 require "word_2_quiz/errors"
 
 module Word2Quiz
   def self.parse_answers(file_path)
-    yomu = Yomu.new file_path
-    text = yomu.text
+    text = DocRipper::rip(file_path)
+
+    if text.nil?
+      raise InvalidAnswerKey.new "The uploaded answer key could not be parsed."
+    end
+
     answers = {}
 
     scanner = StringScanner.new(text)
