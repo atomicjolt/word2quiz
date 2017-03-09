@@ -5,14 +5,14 @@ require "rubygems"
 describe Word2Quiz do
   describe "parse_answers " do
     before do
-      allow(Yomu).to receive(:new).and_return(
-        double(text: "QUES ANS ---- --- Quiz solutions: 1. A  2. B"),
+      allow(DocRipper).to receive(:rip).and_return(
+        "QUES ANS ---- --- Quiz solutions: 1. A  2. B",
       )
     end
 
     it "opens the document" do
-      expect(Yomu).to receive(:new).and_return(
-        double(text: "QUES ANS ---- --- Quiz solutions: 1. A  2. B"),
+      allow(DocRipper).to receive(:rip).and_return(
+        "QUES ANS ---- --- Quiz solutions: 1. A  2. B",
       )
 
       Word2Quiz.parse_answers("file path")
@@ -25,8 +25,8 @@ describe Word2Quiz do
     end
 
     it "raises an error when the answer key is invalid" do
-      allow(Yomu).to receive(:new).and_return(
-        double(text: "Quiz solutions: 1. A  2. B"),
+      allow(DocRipper).to receive(:rip).and_return(
+        "Quiz solutions: 1. A  2. B",
       )
 
       expect do
