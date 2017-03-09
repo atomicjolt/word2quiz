@@ -3,6 +3,11 @@
 Converts word document quizzes to a Word2Quiz::Quiz, which can be converted to a hash or to an Instructure canvas hash format.
 
 ## Installation
+This gem uses antiword to parse doc files. On a mac:
+  `brew install antiword`
+
+On linux:
+  `sudo apt-get install antiword`
 
 Add this line to your application's Gemfile:
 
