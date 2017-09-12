@@ -2,6 +2,7 @@ require "word_2_quiz/question"
 require "rspec"
 require "rspec/mocks"
 require "rubygems"
+require "factory_girl"
 
 describe Word2Quiz::Question do
   before(:each) do
