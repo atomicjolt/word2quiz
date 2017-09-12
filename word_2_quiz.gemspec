@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
     ["doc_ripper", "~> 0.0.7.2"],
     ["docx", "~> 0.2"],
     ["numbers_in_words", "~> 0.4"],
-    ["activesupport", "~> 4.2"],
+    ["activesupport", "> 4.2"],
   ].each { |d| spec.add_runtime_dependency(*d) }
 end

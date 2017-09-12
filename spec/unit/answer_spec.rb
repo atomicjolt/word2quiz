@@ -1,6 +1,7 @@
 require "word_2_quiz/answer"
 require "rspec"
 require "rubygems"
+require "factory_girl"
 
 describe Word2Quiz::Answer do
   describe "from_paragraphs" do

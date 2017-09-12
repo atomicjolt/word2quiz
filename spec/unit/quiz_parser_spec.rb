@@ -2,6 +2,7 @@ require "rspec"
 require "rspec/mocks"
 require "word_2_quiz/quiz_parser"
 require "word_2_quiz/quiz"
+require "factory_girl"
 
 describe Word2Quiz do
   describe "quiz_parser" do

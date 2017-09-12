@@ -1,6 +1,7 @@
 require "word_2_quiz/quiz_solutions_parser"
 require "rspec"
 require "rubygems"
+require "factory_girl"
 
 describe Word2Quiz do
   describe "parse_answers " do
